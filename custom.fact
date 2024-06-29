@@ -1,3 +1,0 @@
-[packages]
-web=httpd
-db=mariadb-server

@@ -1,0 +1,69 @@
+version: '3.7'
+
+networks:
+  ansible_lab_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.234.0/24
+
+services:
+  controlnode:
+    image: opensourceops/almalinux-sshd
+    container_name: controlnode
+    hostname: controlnode.oss.ops
+    networks:
+      ansible_lab_net:
+        ipv4_address: 172.16.234.10
+    ports:
+      - "2201:22"
+    tty: true
+    stdin_open: true
+
+  remote1:
+    image: opensourceops/almalinux-sshd
+    container_name: remote1
+    hostname: remote1.oss.ops
+    networks:
+      ansible_lab_net:
+        ipv4_address: 172.16.234.11
+    ports:
+      - "2202:22"
+    tty: true
+    stdin_open: true
+
+  remote2:
+    image: opensourceops/almalinux-sshd
+    container_name: remote2
+    hostname: remote2.oss.ops
+    networks:
+      ansible_lab_net:
+        ipv4_address: 172.16.234.12
+    ports:
+      - "2203:22"
+    tty: true
+    stdin_open: true
+
+  remote3:
+    image: opensourceops/ubuntu-sshd
+    container_name: remote3
+    hostname: remote3.oss.ops
+    networks:
+      ansible_lab_net:
+        ipv4_address: 172.16.234.13
+    ports:
+      - "2204:22"
+    tty: true
+    stdin_open: true
+
+  remote4:
+    image: opensourceops/ubuntu-sshd
+    container_name: remote4
+    hostname: remote4.oss.ops
+    networks:
+      ansible_lab_net:
+        ipv4_address: 172.16.234.14
+    ports:
+      - "2205:22"
+    tty: true
+    stdin_open: true
